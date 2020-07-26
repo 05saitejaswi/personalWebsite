@@ -28,6 +28,7 @@ function setIntoTaskCard(id) {
     var title = datalist[id].title;
     var status = datalist[id].status;
     var priority = datalist[id].priority;
+    var completedDate = datalist[id].completedDate;
     var estimatedTime = datalist[id].estimatedTime;
     var difficulty = datalist[id].difficulty;
     var des = datalist[id].des;
@@ -40,7 +41,7 @@ function setIntoTaskCard(id) {
 
     console.log(title, status, priority, estimatedTime, difficulty, des, creator, category, assignee, creationDate, id);
 
-    loadFrame(id, title, status, priority, estimatedTime, difficulty, des, creator, category, assignee, logWorkTotalTime, workDone, creationDate);
+    loadFrame(id, title, status, priority,completedDate, estimatedTime, difficulty, des, creator, category, assignee, logWorkTotalTime, workDone, creationDate);
 
     return "ok";
 }
@@ -115,7 +116,7 @@ function fillLogWork(id)
     var time = today.getHours() + ":" + today.getMinutes();
     var commentDateTime = date + "|" + time +  "|" ;
 
-  
+
     document.getElementById("logWorkId").innerHTML = id;
     document.getElementById("logWorkTitle").innerHTML = datalist[id].title;
     document.getElementById("logWorkET").innerHTML = datalist[id].estimatedTime;
@@ -132,7 +133,7 @@ function openEditWork() {
     $("#head").hide(0);
     $("#editWork").fadeIn(100);
 
-    fillEditWork(selectedId);    
+    fillEditWork(selectedId);
 }
 
 function fillEditWork(id) {
@@ -319,8 +320,11 @@ $("#logWorkSubmit").click(function() {
     var comment = document.getElementById("logWorkComment").value;
 
     logWorkTotalTime = parseInt(logWorkTotalTime) + parseInt(logWorkTime);
-
-    var result = updateFromLogWorkData(id, logWorkTotalTime, status, workDone, comment);
+    if (status == "Completed") {
+    var today = new Date();
+    var completedDate =today.getDate() +"/" +(today.getMonth() + 1) +"/" +today.getFullYear();
+  }
+    var result = updateFromLogWorkData(id, logWorkTotalTime, status, workDone, comment,completedDate);
 
     console.log(result);
 

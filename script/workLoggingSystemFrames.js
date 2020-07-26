@@ -1,6 +1,6 @@
-function loadFrame(id, title, status, priority, estimatedTime, difficulty, des, creator, category, assignee, logWorkTotalTime, workDone,creationDate)
+function loadFrame(id, title, status, priority,completedDate, estimatedTime, difficulty, des, creator, category, assignee, logWorkTotalTime, workDone,creationDate)
 {
-    
+
 var tickets = document.getElementById("jobTickets").innerHTML;
 var completedTickets = document.getElementById("taskTickets").innerHTML;
 
@@ -15,12 +15,12 @@ frame += "<div class=\"col-md-12\">";
 frame += "<div class=\"row frameHead\">";
 frame += "<div class=\"col-md-3 menuTicket\">Id:</div>";
 frame += "<div class=\"col detail\">"+id+"</div>";
-frame += "</div>";         
+frame += "</div>";
 frame += "<div class=\"row\">";
 frame += "<div class=\"col-md-3 menuTicket\">Title: </div>";
 frame += "<div class=\"col detail\">"+title+"</div>";
 frame += "</div>";
-frame += "<div class=\"row\">";      
+frame += "<div class=\"row\">";
 frame += "<div class=\"col-md-3 menuTicket\">Priority:</div>";
 frame += "<div class=\"col detail\">"+priority+"</div>";
 frame += "</div>";
@@ -50,7 +50,7 @@ frameDetails += "<button id=\"logWorkButton\" onclick=\"openLogWork()\">Log Work
 frameDetails += "</div>";
 frameDetails += "<div class=\"col-md-2 editButton\" id=\"editWorkButton\">";
 frameDetails += "<button id=\"editWorkButton\" onclick=\"openEditWork()\">Edit</button>";
-frameDetails += "</div>"; 
+frameDetails += "</div>";
 frameDetails += "<div class=\"col-md-3\">";
 frameDetails += "<div class=\"row\">";
 frameDetails += "<div class=\"col-md-3 menu\">Id:</div>";
@@ -62,28 +62,33 @@ frameDetails += "</div>";
 frameDetails += "<div class=\"row part\">";
 frameDetails += "<div class=\"col-md-2 menu\">Description: </div>";
 frameDetails += "<div class=\"col\">";
-frameDetails += "<div class=\"row desBox\">";   
-frameDetails += "<div class=\"col\">"+des+"</div>"; 
-frameDetails += "</div>"; 
+frameDetails += "<div class=\"row desBox\">";
+frameDetails += "<div class=\"col\">"+des+"</div>";
 frameDetails += "</div>";
-frameDetails += "<div class=\"col-md-1\">";  
-frameDetails += "</div>"; 
 frameDetails += "</div>";
-frameDetails += "<div class=\"row part\">";  
-frameDetails += "<div class=\"col\">"; 
+frameDetails += "<div class=\"col-md-1\">";
+frameDetails += "</div>";
+frameDetails += "</div>";
+frameDetails += "<div class=\"row part\">";
+frameDetails += "<div class=\"col\">";
 frameDetails += "<div class=\"row\">";
-frameDetails += "<div class=\"col menu\">Priority:</div>";  
+frameDetails += "<div class=\"col menu\">Priority:</div>";
 frameDetails += "<div class=\"col menuData\">"+priority+"</div>";
-frameDetails += "</div>"; 
 frameDetails += "</div>";
-frameDetails += "<div class=\"col\"></div>";  
+frameDetails += "<br>";
+frameDetails += '<div class="row">';
+frameDetails += '<div class="col menu">Date Of Completion:</div>';
+frameDetails += '<div class="col menuData">' + completedDate + "</div>";
+frameDetails += "</div>";
+frameDetails += "</div>";
+frameDetails += "<div class=\"col\"></div>";
 frameDetails += "<div class=\"col\">";
 frameDetails += "<div class=\"row\">";
 frameDetails += "<div class=\"col menu\">Difficulty:</div>";
 frameDetails += "<div class=\"col menuData\">"+difficulty+"</div>";
 frameDetails += "</div>";
 frameDetails += "</div>";
-frameDetails += "<div class=\"col\"></div>"; 
+frameDetails += "<div class=\"col\"></div>";
 frameDetails += "<div class=\"col\">";
 frameDetails += "<div class=\"row\">";
 frameDetails += "<div class=\"col menu\">Assignee:</div>";

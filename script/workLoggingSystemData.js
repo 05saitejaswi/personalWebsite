@@ -3,6 +3,7 @@ class Data {
         this.title = data.Title;
         this.status = data.Status;
         this.priority = data.Priority;
+        this.completedDate = data.CompletedDate;
         this.estimatedTime = data.ET;
         this.difficulty = data.Difficulty;
         this.des = data.Description;

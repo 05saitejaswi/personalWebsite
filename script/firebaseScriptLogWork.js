@@ -1,4 +1,4 @@
-/* For Testing 
+/* For Testing
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyA1unUPPxmMSwJGQ1khDiDLtxAXYElqm54",
@@ -84,7 +84,7 @@ firebase.auth.EmailAuthProvider.PROVIDER_ID
 // tosUrl: '<your-tos-url>',
 // // Privacy policy url.
 // privacyPolicyUrl: '<your-privacy-policy-url>'
-};  
+};
 
 function createNewTask(title,des,priority,difficulty,creator,assignee,estimatedTime,status,category,creationDate) {
 
@@ -92,6 +92,7 @@ function createNewTask(title,des,priority,difficulty,creator,assignee,estimatedT
   var taskId = category[0]+taskIdNumber;
   var loggedWorkTotalTime = 0;
   var workDone = 0;
+  var completedDate = "Not Yet Completed";
 
   database.ref('Tasks/' + taskId).set({
     Title: title,
@@ -105,7 +106,8 @@ function createNewTask(title,des,priority,difficulty,creator,assignee,estimatedT
     Category: category,
     LogWorkTotalTime: loggedWorkTotalTime,
     CreationDate: creationDate,
-    WorkDone: workDone
+    WorkDone: workDone,
+    CompletedDate: completedDate,
   });
 
   newTaskCreatedSuccessfully();
@@ -162,13 +164,15 @@ function createInstance(id, data)
   datalist[id] = new Data(data);
 }
 
-function updateFromLogWorkData(id, logWorkTotalTime, status, workDone, comment)
+function updateFromLogWorkData(id, logWorkTotalTime, status, workDone, comment,completedDate)
 {
   var updates = {};
   updates['/Tasks/' + id + '/LogWorkTotalTime'] = logWorkTotalTime;
   updates['/Tasks/' + id + '/Status'] = status;
   updates['/Tasks/' + id + '/WorkDone'] = workDone;
   updates['/Tasks/' + id + '/Comment'] = comment;
+  updates["/Tasks/" + id + "/CompletedDate"] = completedDate;
+
 
   return database.ref().update(updates);
 
